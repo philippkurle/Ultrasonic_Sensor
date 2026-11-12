@@ -1,18 +1,23 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include "ultrasonicSensor.h"
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+
+  pinMode(PIN_TRIGGER, OUTPUT);
+  pinMode(PIN_ECHO, INPUT);
+
+  setupTrigger();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  uint32_t now = micros();
+  triggerEvent(now);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  uint32_t measuredTime = sensorReading();
+  uint32_t distance = calculateDistance(measuredTime);
+
+  updateSerialMonitor(distance);
+
+  delay(60);
 }
