@@ -3,13 +3,13 @@
 
 #include <Arduino.h>
 
-#define PIN_TRIGGER          22
-#define PIN_ECHO             24
+#define PIN_TRIGGER              22
+#define PIN_ECHO                 24
 
-#define SPEED_OF_SOUND_CM_PER_US       0.0343
-#define TRIGGER_SIGNAL_TIME_US  10     // US = µs
+#define SPEED_OF_SOUND_CM_PER_US 0.0343
+#define TRIGGER_SIGNAL_TIME_US   10     // US = µs
 
-#define TRIGGER_INTERVAL_MS 60
+#define TRIGGER_INTERVAL_MS      60
 
 enum SensorState{
   STATE_IDLE,
